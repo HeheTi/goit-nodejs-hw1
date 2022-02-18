@@ -6,13 +6,13 @@ const contactsPath = path.resolve("db/contacts.json");
 // const absolutePath = path.join(__dirname, "./db/contacts.json");
 
 function listContacts() {
-  fs.readFile(contactsPath, "utf-8")
+  fs.readFile(contactsPath)
     .then((data) => console.table(JSON.parse(data)))
     .catch((err) => console.log(err));
 }
 
 function getContactById(contactId) {
-  fs.readFile(contactsPath, "utf-8")
+  fs.readFile(contactsPath)
     .then((data) => {
       const filtrCont = JSON.parse(data).filter(({ id }) => {
         return id === String(contactId);
@@ -23,7 +23,7 @@ function getContactById(contactId) {
 }
 
 function removeContact(contactId) {
-  fs.readFile(contactsPath, "utf-8")
+  fs.readFile(contactsPath)
     .then((data) => {
       const filtrCont = JSON.parse(data).filter(({ id }) => {
         return id !== String(contactId);
@@ -35,7 +35,7 @@ function removeContact(contactId) {
 }
 
 function addContact(name, email, phone) {
-  fs.readFile(contactsPath, "utf-8")
+  fs.readFile(contactsPath)
     .then((data) => JSON.parse(data))
     .then((data) => {
       const newContact = { id: nanoid(), name, email, phone };
